@@ -1,0 +1,33 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: catalogue-service-route
+          uri: http://192.168.0.105:8081
+          predicates:
+            - Host=**catalogue.api.application.com.192.168.0.105.nip.io**
+        - id: feedback-service-route
+          uri: http://192.168.0.105:8085
+          predicates:
+            - Host=**feedback.api.application.com.192.168.0.105.nip.io**
+  security:
+    oauth2:
+      client:
+        provider:
+          keycloak:
+            issuer-uri: http://192.168.0.105:8084/realms/application_keycloak
+        registration:
+          discovery:
+            provider: keycloak
+            client-id: api-gateway
+            client-secret: XUPcveNTZTjd6TNEKslU2UDUo4iiETRZ
+            authorization-grant-type: client_credentials
+            scope:
+              - discovery
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+    register-with-eureka: false
+  instance:
+    prefer-ip-address: true
