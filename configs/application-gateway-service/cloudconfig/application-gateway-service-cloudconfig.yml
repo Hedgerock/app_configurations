@@ -1,4 +1,8 @@
 spring:
+  boot:
+    admin:
+      client:
+        enabled: false
   cloud:
     gateway:
       routes:
@@ -12,6 +16,9 @@ spring:
             - Host=**feedback.api.application.com.192.168.0.105.nip.io**
   security:
     oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://192.168.0.105:8084/realms/application_keycloak
       client:
         provider:
           keycloak:
@@ -24,6 +31,29 @@ spring:
             authorization-grant-type: client_credentials
             scope:
               - discovery
+          metrics:
+            provider: keycloak
+            client-id: api-gateway
+            client-secret: XUPcveNTZTjd6TNEKslU2UDUo4iiETRZ
+            authorization-grant-type: client_credentials
+            scope:
+              - metrics_server
+management:
+  health:
+    livenessstate:
+      enabled: true
+    readinessstate:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  zipkin:
+    tracing:
+      endpoint: http://192.168.0.105:9411/api/v2/spans
+  tracing:
+    sampling:
+      probability: 1.0
 eureka:
   client:
     service-url:
