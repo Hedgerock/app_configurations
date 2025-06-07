@@ -27,7 +27,7 @@ spring:
           keycloak:
             issuer-uri: http://192.168.0.105:8084/realms/application_keycloak
   datasource:
-    url: jdbc:postgresql://localhost:5433/catalogue
+    url: jdbc:postgresql://192.168.0.105:5433/catalogue
     username: catalogue
     password: catalogue
   flyway:
@@ -66,6 +66,6 @@ management:
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://192.168.0.105:8761/eureka/
   instance:
     prefer-ip-address: true
