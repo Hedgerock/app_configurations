@@ -7,10 +7,10 @@ spring:
     gateway:
       routes:
         - id: catalogue-service-route
-          uri: http://192.168.0.105:8081
+          uri: lb://application-catalogue-service
           predicates:
             - Host=**catalogue.api.application.com.192.168.0.105.nip.io**
-        - id: feedback-service-route
+        - id: lb://application-feedback-service
           uri: http://192.168.0.105:8085
           predicates:
             - Host=**feedback.api.application.com.192.168.0.105.nip.io**
