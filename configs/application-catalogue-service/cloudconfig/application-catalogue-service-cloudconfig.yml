@@ -45,7 +45,7 @@ springdoc:
       client-id: catalogue-service-swagger-ui
       use-pkce-with-authorization-code-grant: true
 keycloak:
-  uri: http://localhost:8084
+  uri: http://192.168.0.105:8084
 
 management:
   health:
