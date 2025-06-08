@@ -6,14 +6,22 @@ spring:
   cloud:
     gateway:
       routes:
-        - id: catalogue-service-route
+        - id: application-catalogue-service-route
           uri: lb://application-catalogue-service
           predicates:
             - Host=**catalogue.api.application.com.192.168.0.105.nip.io**
-        - id: lb://application-feedback-service
-          uri: http://192.168.0.105:8085
+        - id: application-feedback-service-route
+          uri: lb://application-feedback-service
           predicates:
             - Host=**feedback.api.application.com.192.168.0.105.nip.io**
+        - id: customer-application-route
+          uri: lb://application-customer-app
+          predicates:
+            - Host=**customer.application.com.192.168.0.105.nip.io**
+        - id: manager-application-route
+          uri: lb://application-manager-app
+          predicates:
+            - Host=**manager.application.com.192.168.0.105.nip.io**
   security:
     oauth2:
       resourceserver:
@@ -58,6 +66,5 @@ eureka:
   client:
     service-url:
       defaultZone: http://192.168.0.105:8761/eureka/
-    register-with-eureka: false
   instance:
     prefer-ip-address: true

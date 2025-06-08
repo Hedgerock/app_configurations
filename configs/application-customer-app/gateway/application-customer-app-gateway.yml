@@ -1,0 +1,14 @@
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          keycloak:
+            client-id: customer-application-nip-io
+            client-secret: 9ozHsZ0Kucdu65OTiIkgS2VEBHvNMzcV
+          metrics:
+            client-id: customer-application-nip-io
+            client-secret: 9ozHsZ0Kucdu65OTiIkgS2VEBHvNMzcV
+          discovery:
+            client-id: customer-application-nip-io
+            client-secret: 9ozHsZ0Kucdu65OTiIkgS2VEBHvNMzcV
